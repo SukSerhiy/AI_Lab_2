@@ -48,6 +48,7 @@
     <Compile Include="Creature.cs" />
     <Compile Include="DFSGraph.cs" />
     <Compile Include="DFSWithIterativeDeepingGraph.cs" />
+    <Compile Include="Exceptions\UncorrectStringForBoolParsingException.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Pasenger.cs" />

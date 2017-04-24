@@ -38,6 +38,10 @@ namespace AI_Lab_2
             Console.WriteLine(step + " шагов");
         }
 
+        /// <summary>
+        /// DFS-search for graph of states.
+        /// </summary>
+        /// <param name="vertex">Root vertex</param>
         private void DFS(Vertex vertex)
         {
             bool[] stateArr = vertex.state.toArray();
@@ -241,6 +245,12 @@ namespace AI_Lab_2
             }
         }
 
+        /// <summary>
+        /// Tries to add child node to current parent node
+        /// </summary>
+        /// <param name="parent">Parent node</param>
+        /// <param name="child">Child node which is trying to add</param>
+        /// <returns>True, if child node wass added. False, if not.</returns>
         private bool TryAddChildForDFS(Vertex parent, Vertex child)
         {
             State childState = child.state;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI_Lab_2.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace AI_Lab_2
 
         public abstract void Search();
 
+        /// <summary>
+        /// Prints a collection to console
+        /// </summary>
+        /// <param name="arr">Printed collection</param>
         protected void PrintState(IEnumerable<bool> arr)
         {
             foreach (bool b in arr)
@@ -32,6 +37,10 @@ namespace AI_Lab_2
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Prints a collection to file
+        /// </summary>
+        /// <param name="arr">Printed collection</param>
         protected void PrintStateToFile(IEnumerable<bool> arr)
         {
             foreach (bool b in arr)
@@ -41,6 +50,12 @@ namespace AI_Lab_2
             sw.WriteLine();
         }
 
+        /// <summary>
+        /// Tries to add child node to parent node
+        /// </summary>
+        /// <param name="parent">Parent node</param>
+        /// <param name="child">Child node we need to add</param>
+        /// <returns>True if child node was added. False if not</returns>
         protected bool TryToAddChild(Vertex parent, Vertex child)
         {
             boat.ClearPlaces();
@@ -67,6 +82,11 @@ namespace AI_Lab_2
 
         }
 
+        /// <summary>
+        /// Result has been found
+        /// </summary>
+        /// <param name="arr">Current state array</param>
+        /// <returns>True, if arr is result state. False if not.</returns>
         protected bool isResult(bool[] arr)
         {
             if (arr.Where(b => b == false).Count() > 0)
@@ -76,11 +96,19 @@ namespace AI_Lab_2
             return true;
         }
 
+        /// <summary>
+        /// Parses a 6-character string of '0' or '1' to array of bool values (0 - false, 1 - true)
+        /// </summary>
+        /// <param name="str">string of '0' or '1'</param>
+        /// <returns>Array of bool values</returns>
+        /// <exception>UncorrectStringForBoolParsingException</exception>
         protected bool[] ParseStrInBool(string str)
         {
             List<bool> lst = new List<bool>();
             for(int i = 0; i < str.Length; i++)
             {
+                if (str[i] != '0' && str[i] != 1)
+                    throw new UncorrectStringForBoolParsingException();
                 if (str[i] == '0')
                     lst.Add(false);
                 else if (str[i] == '1')

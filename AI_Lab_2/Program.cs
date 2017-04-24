@@ -13,8 +13,8 @@ namespace AI_Lab_2
         {
             Graph g;
 
-            //g = new DFSGraph();
-            g = new BFSGraph();
+            g = new DFSGraph();
+            //g = new BFSGraph();
             //g = new DFSWithIterativeDeepingGraph(14);
 
             g.Search();
