@@ -30,10 +30,7 @@ namespace AI_Lab_2
             DateTime before = DateTime.Now;
             int stepOfDepth = maxDepth;
             while (!currentRun())
-            {
                 maxDepth += stepOfDepth;
-            }
-            //Console.WriteLine("The End");
             
             DateTime after = DateTime.Now;
             TimeSpan time = after - before;
@@ -61,11 +58,8 @@ namespace AI_Lab_2
             Vertex child = DFS(root);
             while (!resultFound && !(stack.Count == 0 && child == null))
             {
-
                 if (child != null)
-                {
                     child = DFS(child);
-                }
             }
             if (resultFound)
             {
@@ -76,11 +70,6 @@ namespace AI_Lab_2
 
         private Vertex DFS(Vertex vertex)
         {
-            //if (count == 30193) Console.ReadLine();
-            //Console.WriteLine();
-            //Console.WriteLine("depth = " + stack.Count);
-            
-            //PrintState(vertex.state.toArray());
             bool[] stateArr = vertex.state.toArray();
             bool boatState = boat.State;
             bool newAdgeAdded = false;
@@ -119,8 +108,6 @@ namespace AI_Lab_2
 
                         if (newAdgeAdded)
                         {
-                            //Console.WriteLine("ADDED : ");
-                            //PrintState(child.state.toArray());
                             return child;
                         }
 
@@ -133,8 +120,6 @@ namespace AI_Lab_2
                     {
                         if (stack.Count > 0 && (i == stateArr.Count() - 1 || stack.Count >= maxDepth))
                         {
-                            //Console.WriteLine("POPPED : ");
-                            //PrintState(stack.Peek().state.toArray());
                             boat.ChangeState();
                             return stack.Pop();
                         }
@@ -163,8 +148,6 @@ namespace AI_Lab_2
 
                                 if (newAdgeAdded)
                                 {
-                                    //Console.WriteLine("ADDED : ");
-                                    //PrintState(child.state.toArray());
                                     return child;
                                 }
 
@@ -177,8 +160,6 @@ namespace AI_Lab_2
                             {
                                 if (stack.Count > 0 && ((i == stateArr.Count() - 1 && j == stateArr.Count() - 1) || stack.Count >= maxDepth))
                                 {
-                                    //Console.WriteLine("POPPED : ");
-                                    //PrintState(stack.Peek().state.toArray());
                                     boat.ChangeState();
                                     return stack.Pop();
                                 }
@@ -221,8 +202,6 @@ namespace AI_Lab_2
 
                         if (newAdgeAdded)
                         {
-                            //Console.WriteLine("ADDED : ");
-                            //PrintState(child.state.toArray());
                             return child;
                         }
                     }
@@ -234,8 +213,6 @@ namespace AI_Lab_2
                     {
                         if (stack.Count > 0 && (i == stateArr.Count() - 1 || stack.Count >= maxDepth))
                         {
-                            //Console.WriteLine("POPPED : ");
-                            //PrintState(stack.Peek().state.toArray());
                             boat.ChangeState();
                             return stack.Pop();
                         }
@@ -265,8 +242,6 @@ namespace AI_Lab_2
 
                                 if (newAdgeAdded)
                                 {
-                                    //Console.WriteLine("ADDED : ");
-                                    //PrintState(child.state.toArray());
                                     return child;
                                 }
 
@@ -292,6 +267,12 @@ namespace AI_Lab_2
             return null;
         }
 
+        /// <summary>
+        /// Tries to add child node to current parent node
+        /// </summary>
+        /// <param name="parent">Parent node</param>
+        /// <param name="child">Child node which is trying to add</param>
+        /// <returns>True, if child node wass added. False, if not</returns>
         private bool TryAddChildForDFS(Vertex parent, Vertex child)
         {
             State childState = child.state;

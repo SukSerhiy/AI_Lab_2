@@ -10,7 +10,13 @@ namespace AI_Lab_2
     {
         private const int PLACES_NUMBER = 2;
         private static Boat boat;
+        /// <summary>
+        /// List of passangers in the boat
+        /// </summary>
         List<Creature> passengers = new List<Creature>();
+        /// <summary>
+        /// On which bank is the boat now (false - left, true - right)
+        /// </summary>
         private bool state;
 
         public bool State
@@ -21,10 +27,19 @@ namespace AI_Lab_2
             }
         }
 
+        /// <summary>
+        /// Clears all places in boat
+        /// </summary>
         public void ClearPlaces()
         {
             passengers.Clear();
         }
+
+        /// <summary>
+        /// Tries to add passanger to the boat
+        /// </summary>
+        /// <param name="creature">Passenger we have to add</param>
+        /// <returns>True, if passenger was added. False if not</returns>
         public bool TryAddPassenger(Creature creature)
         {
             int count = passengers.Count;
@@ -35,7 +50,11 @@ namespace AI_Lab_2
             }
             return false;
         }
-        
+
+        /// <summary>
+        /// Whether the boat is managable
+        /// </summary>
+        /// <returns></returns>
         public bool isManagable()
         {
             bool result = false;
@@ -53,12 +72,18 @@ namespace AI_Lab_2
             return result;
         }
 
+        /// <summary>
+        /// Move the boat to another coast
+        /// </summary>
         public void ChangeState()
         {
             state = !state;
             passengers.Clear();
         }
 
+        /// <summary>
+        /// Set boat to the initial state (left coast, no passengers)
+        /// </summary>
         public void ResetState()
         {
             state = false;
@@ -70,6 +95,9 @@ namespace AI_Lab_2
             state = false;
         }
 
+        /// <summary>
+        /// Get singleton object of boat
+        /// </summary>
         public static Boat GetBoat
         {
             get

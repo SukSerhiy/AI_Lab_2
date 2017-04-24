@@ -8,7 +8,6 @@ namespace AI_Lab_2
 {
     class Program
     {
-        //Main method
         static void Main(string[] args)
         {
             Graph g;

@@ -8,6 +8,9 @@ namespace AI_Lab_2
 {
     class DFSGraph : Graph
     {
+        /// <summary>
+        /// Stack of vertexes that are already passed
+        /// </summary>
         private Stack<Vertex> stack;
 
         public DFSGraph()
@@ -250,7 +253,7 @@ namespace AI_Lab_2
         /// </summary>
         /// <param name="parent">Parent node</param>
         /// <param name="child">Child node which is trying to add</param>
-        /// <returns>True, if child node wass added. False, if not.</returns>
+        /// <returns>True, if child node wass added. False, if not</returns>
         private bool TryAddChildForDFS(Vertex parent, Vertex child)
         {
             State childState = child.state;

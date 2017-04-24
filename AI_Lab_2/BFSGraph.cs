@@ -45,7 +45,11 @@ namespace AI_Lab_2
             sw.Close();
             Console.WriteLine(step + " шагов");
         }
-        
+        /// <summary>
+        /// BFS-search
+        /// </summary>
+        /// <param name="elements">Last layer of vertexes</param>
+        /// <returns>Next layer of vertexes</returns>
         private Queue<Vertex> BFS(Queue<Vertex> elements)
         {
             Queue<Vertex> adges = new Queue<Vertex>();
@@ -95,12 +99,9 @@ namespace AI_Lab_2
                                         resultFound = true;
                                         break;
                                     }
-
                                 }
-
                             }
                         }
-
                     }
                 }
                 else
@@ -126,7 +127,6 @@ namespace AI_Lab_2
                                 resultFound = true;
                                 break;
                             }
-
 
                             for (int j = i + 1; j < stateArr.Count(); j++)
                             {
@@ -156,6 +156,13 @@ namespace AI_Lab_2
             return adges;
         }
 
+        /// <summary>
+        /// Tries to add child node to current parent node
+        /// </summary>
+        /// <param name="parent">Parent node</param>
+        /// <param name="child">Child node which is trying to add</param>
+        /// <param name="adges">Layer of vartexes</param>
+        /// <returns>True, if child node wass added. False, if not</returns>
         private bool TryAddChildForBFS(Vertex parent, Vertex child, Queue<Vertex> adges)
         {
             State childSt = child.state;

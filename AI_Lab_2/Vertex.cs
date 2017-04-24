@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AI_Lab_2
 {
+    /// <summary>
+    /// Vertex of graph
+    /// </summary>
     class Vertex
     {
         public State state;

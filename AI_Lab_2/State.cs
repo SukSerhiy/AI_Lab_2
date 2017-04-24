@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AI_Lab_2
 {
+    /// <summary>
+    /// State of a vertex (in what banks are the creatures. true - right bank, false - left)
+    /// </summary>
     public class State
     {
         private Manager man_1;
@@ -15,19 +18,7 @@ namespace AI_Lab_2
         private Pasenger small_monkey_1;
         private Pasenger small_monkey_2;
         private Boat boat;
-
-        public static Dictionary<int, string> MemberIndexes = new Dictionary<int, string>();
         
-        static State()
-        {
-            MemberIndexes.Add(0, "Первый человек");
-            MemberIndexes.Add(1, "Второй человек");
-            MemberIndexes.Add(2, "Третий человек");
-            MemberIndexes.Add(3, "Большая обезьяна");
-            MemberIndexes.Add(4, "Первая маленькая обезьяна");
-            MemberIndexes.Add(5, "Вторая маленькая обезьяна");
-        }
-
         public State() {
             man_1 = new Manager(false);
             man_2 = new Manager(false);
@@ -71,6 +62,12 @@ namespace AI_Lab_2
             boat = Boat.GetBoat;
         }
 
+        /// <summary>
+        /// Get creature by it's index
+        /// </summary>
+        /// <param name="index">Index of the creature</param>
+        /// <returns></returns>
+        /// <exception>IndexOutOfRangeException</exception>
         public Creature getCreatureByIndex(int index)
         {
             switch(index)
@@ -93,11 +90,19 @@ namespace AI_Lab_2
             
         }
 
+        /// <summary>
+        /// Checks whether the boat are manageable in current state
+        /// </summary>
+        /// <returns>True if manageable. False if not</returns>
         public bool BoatIsManageable()
         {
             return (man_1.state || man_2.state || man_3.state || big_monkey.state) ? true : false;
         }
 
+        /// <summary>
+        /// Checks whether people are alive in current state
+        /// </summary>
+        /// <returns>True if alive. False if not</returns>
         public bool PeopleAreAlive()
         {
             int monkeyCounterOnLeft = 0;
